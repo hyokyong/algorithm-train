@@ -14,14 +14,13 @@ function solution() {
     let [x, y] = input[i].split(' ').map(Number); // split으로 쪼개진 배열을 숫자로 변환, 구조분해할당으로 배열 만듦
     data.push([x, y]);
   }
+  console.log(data);
+  // [ [ 3, 4 ], [ 1, 1 ], [ 1, -1 ], [ 2, 2 ], [ 3, 3 ] ]
 
   function compare(a, b) {
     if (a[0] != b[0]) return a[0] - b[0];
     else return a[1] - b[1];
   }
-
-  console.log(data);
-  // [ [ 3, 4 ], [ 1, 1 ], [ 1, -1 ], [ 2, 2 ], [ 3, 3 ] ]
 
   data.sort(compare);
 
