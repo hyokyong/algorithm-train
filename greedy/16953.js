@@ -1,12 +1,10 @@
 //let fs = require("fs");
 //let input = fs.readFileSync("/dev/stdin").toString().split("\n");
 
-// 큰 수를 나누면서
+let a = 100;
+let number = 40021;
 
-let a = 2;
-let number = 162;
-
-let result = 1;
+let result = 1; // 최솟값이 1을 더한값이므로 +1을 해줌!
 let flag = false;
 
 function getLastIndex(number) {
@@ -24,21 +22,17 @@ while (number >= a) {
     break;
   }
 
-  //   console.log("1", String(number)[getLastIndex(number)]);
+  let stringNumber = String(number);
 
   // 2의 배수면?
   if (number % 2 == 0) {
     number = parseInt(number / 2);
   }
   // 마지막 자리가 1이면?
-  else if (String(number)[getLastIndex(number)] == 1) {
-    let slice = String(number).slice(0, getLastIndex(number)); //여기서 String 빠트림!!!!
-    number = Number(slice[0]); // 여기서 Number 빠트림!!!!
-    // console.log(slice);
-    // console.log(number);
+  else if (stringNumber[getLastIndex(number)] == 1) {
+    let slice = stringNumber.slice(0, getLastIndex(number)); //여기서 String 빠트림!!!!
+    number = Number(slice); // 여기서 string에 대한 slice이니까 return값이 배열이 아닌 string임!
   } else break;
-
-  //   console.log(number);
 
   result++; // 목표는 result의 횟수!
 }
