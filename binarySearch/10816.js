@@ -54,3 +54,5 @@ for (let i = 0; i < num2; i++) {
 }
 
 console.log(result);
+
+// num2 곱하기 nlongn의 시간복잡도 이기 때문에 시간초과 나지 않음!!!
