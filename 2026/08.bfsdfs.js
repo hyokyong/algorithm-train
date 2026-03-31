@@ -5,16 +5,25 @@ const graph = { 1:[2,3], 2:[1,4,5], 3:[1], 4:[2], 5:[2] };
  */
 const graph = { 1: [2, 3], 2: [1, 4, 5], 3: [1], 4: [2], 5: [2] };
 const visited = new Set(); // 주의 밖으로 꺼내야 새로 안만들어짐!!
+const order = [];
 
 function dfs(node) {
   if (visited.has(node)) return; // 이미 방문 했으면 리턴!!!
   visited.add(node);
-  console.log(node);
+  order.push(node); // 방문하는 즉시 기록!
 
   for (const next of graph[node]) {
     dfs(next);
   }
 }
+
+dfs(1);
+// Set을 배열로 변환
+const result = [...visited];
+console.log(result.join(" "));
+
+//order 사용
+console.log(order.join(" "));
 
 /* 문제 2 (BFS)
 같은 그래프에서 1번 노드부터 BFS로 탐색한 순서를 출력하세요.
@@ -35,7 +44,12 @@ function bfs(start) {
       }
     }
   }
+
+  const result = [...visited];
+  return result.join(" ");
 }
+
+bfs(1);
 
 /* 문제 3 (BFS 응용)
 1번 노드에서 5번 노드까지 최단 거리(간선 수)를 구하세요.
@@ -57,3 +71,4 @@ function bfs(start) {
     }
   }
 }
+//visited는 동일하고 queue에만 거리를 추가한다!!!
