@@ -40,8 +40,8 @@ let min = addNum;
 
 for (let i = num; i < arr2.length; i++) {
   //여기서 3이라고 쓰지말고 num처리!!
-  addNum += arr[i];
-  addNum -= arr[i - num];
+  addNum += arr2[i];
+  addNum -= arr2[i - num];
   min = Math.min(addNum, min);
 }
 
@@ -63,7 +63,7 @@ let right3 = arr3.length - 1;
 while (left3 < right3) {
   const sum = arr3[left3] + arr3[right3];
 
-  if (sum === target3) {
+  if (sum <= target3) {
     // arr[left3]와 함께 쌍을 이룰 수 있는 숫자는
     // arr[left3+1]부터 arr[right3]까지 총 (right3 - left3)개입니다.
     count += right3 - left3;
