@@ -10,3 +10,8 @@ function solution(arr) {
 }
 
 console.log(solution([1, 1, 3, 5, 7, 7, 7, 8, 9]));
+
+//2026 문제 풀이
+function solution2(arr) {
+  return [...new Set(arr)];
+}

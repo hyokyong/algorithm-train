@@ -11,31 +11,35 @@
 [출력]
 입력된 수열을 만들기 위해 필요한 연산을 한 줄에 한 개씩 출력한다. push연산은 +로, pop 연산은 -로 표현하도록 한다. 불가능한 경우 NO를 출력한다.
 */
-function solution(string) {
+
+// 2026 문제 풀이
+// 스택은 원래 제일 뒤에 있는거 빼는거잖아. 생각을 해라.
+function solution(arr) {
   let result = [];
   let stack = [];
-  let stackNum = 1;
+  let pointer = 1; // 1부터 n까지 숫자. 점점 증가함. 스택에 넣어야할 다음 숫자를 관리함.
 
-  // 첫번째 제외해야하니 1부터 시작
-  for (let i = 1; i < string.length; i++) {
-    let num = string[i];
+  for (let i = 0; i < arr.length; i++) {
+    const target = arr[i];
 
-    while (stackNum <= num) {
-      stack.push(stackNum);
-      stackNum++;
-      result.push('+');
+    //for만 생각하지 말고 while도 생각하자..
+    //target이 될때까지 push
+    while (pointer <= target) {
+      stack.push(pointer);
+      pointer++; //바로 증가시키기!!!!!!
+      result.push("+");
     }
 
-    let stackPop = stack.pop();
-    result.push('-');
+    let stackPop = stack.pop(); // stack 원본이 자체가 변하고 숫자만 변수에 담김.
+    result.push("-");
 
-    // 조건에 맞출 수 없기 때문에 NO로 교체하고 종료
-    if (stackPop !== num) {
-      result = ['NO'];
-      break;
+    // 스택에서 빼낸 마지막 숫자와 target이 다르면
+    if (stackPop !== target) {
+      // NO로 교체하고 종료
+      return "NO";
     }
   }
 
-  return result.join('\n');
+  return result;
 }
 console.log(solution([8, 4, 3, 6, 8, 7, 5, 2, 1]));

@@ -13,32 +13,32 @@
 
 function solution(string) {
   // 배열로 만들어줌
-  const stringArr = string.split(' ');
+  const stringArr = string.split(" ");
   let arr = [];
 
   for (let i = 0; i < stringArr.length; i++) {
-    arr[i] = stringArr[i].split('').reverse().join('');
+    arr[i] = stringArr[i].split("").reverse().join("");
   }
 
   // 띄어쓰기 있게 합치기
-  return arr.join(' ');
+  return arr.join(" ");
 }
-console.log(solution('sisisi sososo momomo'));
+console.log(solution("sisisi sososo momomo"));
 
 function solution2(string) {
-  const stringArr = string.split(' ');
-  let result = '';
+  const stringArr = string.split(" ");
+  let result = "";
 
   for (let i = 0; i < stringArr.length; i++) {
     const splited = stringArr[i];
     const stack = [];
 
     for (j = 0; j < splited.length; j++) {
-      if (splited[j] === ' ' || splited[j] === undefined) {
+      if (splited[j] === " " || splited[j] === undefined) {
         while (stack.length > 0) {
           result += stack.pop();
         }
-        result += ' ';
+        result += " ";
       } else {
         stack.push(splited[j]);
       }
@@ -47,4 +47,13 @@ function solution2(string) {
   return result;
 }
 
-console.log(solution2('sisisi sososo momomo'));
+console.log(solution2("sisisi sososo momomo"));
+
+// 2026 문제 풀이
+function solution3(string) {
+  const arr = string.split(" ");
+  const reverseArr = arr.map((str) => str.split("").reverse().join(""));
+  //문자열은 reverse를 못쓰기 때문에 배열로 변환하여 사용
+  //split → reverse → join 이 세트로 묶어서 외워둬!
+  return reverseArr.join(" ");
+}
