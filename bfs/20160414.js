@@ -96,7 +96,7 @@ function solution(N, S, Q) {
   }
 
   function bfs(start) {
-    if (hospital.has(start)) return 0; // 이미 병원 포함!!
+    if (hospital.has(start)) return 0; // 기본 조건 먼저 넣기!!!
 
     // 기존 bfs
     const visited = new Set([start]);
@@ -112,7 +112,7 @@ function solution(N, S, Q) {
         const next2 = cur * prime;
 
         for (let next of [next1, next2]) {
-          if (next > N) continue; // N보다 크면 패스
+          if (next < 1 || next > N) continue; // 최소, 최대값 체크
 
           if (visited.has(next)) continue; // 이미 방문했다면 패스
 

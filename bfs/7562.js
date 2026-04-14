@@ -93,3 +93,42 @@ for (let i of a) {
 }
 
 console.log(result);
+
+//2026 문제 풀이
+function solution(size, start, target) {
+  // 배열 비교는 문자로 하기!!!!!
+  // 같은 경우에 리턴 조건 꼭 까먹지 말기!!!!
+  // bfs 함수로 감싸지 않아도 된다
+
+  const [sx, sy] = start; // startx
+  const [tx, ty] = target; // targetx
+  if (sx === tx && sy === ty) return 0; // 조건 까먹지마!!!!!!
+
+  //문자열로 넣기!!!!!!!!!! 배열로 넣으면 같은 배열인지 비교못함.
+  const visited = new Set([`${sx},${sy}`]);
+  const q = [[sx, sy, 0]];
+
+  while (q.length > 0) {
+    const [cx, cy, dist] = q.shift();
+
+    for (let [nx, ny] of [
+      [cx - 2, cy + 1],
+      [cx - 1, cy + 2],
+      [cx + 1, cy + 2],
+      [cx + 2, cy + 1],
+      [cx - 2, cy - 1],
+      [cx - 1, cy - 2],
+      [cx + 2, cy - 1],
+      [cx + 1, cy - 2],
+    ]) {
+      if (nx < 0 || ny < 0 || nx >= size || ny >= size) continue; // =도 붙여야한다!! 체스판은 size -1까지기 때문!!!
+
+      if (visited.has(`${nx},${ny}`)) continue;
+
+      if (nx === tx && ny === ty) return dist + 1;
+
+      visited.add(`${nx},${ny}`); // 문자열 저장
+      q.push([nx, ny, dist + 1]);
+    }
+  }
+}

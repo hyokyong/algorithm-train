@@ -68,3 +68,31 @@ function bfs() {
 }
 
 console.log(bfs());
+
+//2026 문제 풀이
+function solution(start, target) {
+  if (start === target) return 0; // 이거 빠트리면 안돼 둘이 똑같을때!!!!
+
+  const visited = new Set([start]);
+  const q = [[start, 0]];
+
+  while (q.length > 0) {
+    const [cur, dist] = q.shift();
+
+    const next1 = cur - 1;
+    const next2 = cur + 1;
+    const next3 = cur * 2;
+
+    for (let next of [next1, next2, next3]) {
+      // if (next > target) continue; // 이 코드는 틀림. 더 큰 숫자로 이동할 수 있는 경우도 있어.
+      if (next < 0 || next > 100000) continue; // 이 코드가 맞음
+
+      if (visited.has(next)) continue;
+
+      if (next === target) return dist + 1;
+
+      visited.add(next);
+      q.push([next, dist + 1]);
+    }
+  }
+}
