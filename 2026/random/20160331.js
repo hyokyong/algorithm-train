@@ -178,7 +178,6 @@ jsconst arr = [-5, 3, -2, 8, -1];
 // 기대 출력: [-1, -2, 3, -5, 8]
 */
 
-//문제 2. b를 map으로 변환. 비교 count++, 아니면 inclueds
 //4. sort 내림차순. for문 거꾸로 돌기
 //5. new set 돌리고, map변환. 새배열에 push
 //6. object로 몇번 나오는지 체크. arr 숫자로 소팅. for 1인것만
